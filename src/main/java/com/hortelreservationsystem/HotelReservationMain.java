@@ -31,7 +31,7 @@ public class HotelReservationMain {
 		 * Calling method getCheapestHotel with start and end dates as params
 		 * Printing the result: Hotel
 		 */
-		Hotel hotel = hotelReservation.getCheapestHotel(startDate, endDate);
+		String hotel = hotelReservation.getCheapestHotel(startDate, endDate);
 		System.out.println("The cheapest hotel is : \n " + hotel);
 	}
 }

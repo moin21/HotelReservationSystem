@@ -24,7 +24,7 @@ public class HotelReservationSystemTest {
 		hotelReservation.addHotel();
 		LocalDate startDate = LocalDate.of(2021, Month.SEPTEMBER, 10);    
 		LocalDate endDate = LocalDate.of(2021, Month.SEPTEMBER, 11);    
-		Hotel hotel = hotelReservation.getCheapestHotel(startDate, endDate);
-		Assert.assertEquals("Lakewood", hotel.getHotelName());
+		String hotelName = hotelReservation.getCheapestHotel(startDate, endDate);
+		Assert.assertEquals("Lakewood", hotelName);
 	}
 }
