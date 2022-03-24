@@ -25,6 +25,9 @@ public class HotelReservation {
 	int rating;
 	double regularCustomerRate;
 	double weekendRegularCustomerRate;
+	double rewardCustomerRate;
+	double weekendRewartCustomerRate;
+
 	Scanner sc = new Scanner(System.in);
 	/**
 	 * Creating ArrayList of Hotel named hotelList of Hotel type
@@ -52,7 +55,7 @@ public class HotelReservation {
 		regularCustomerRate = sc.nextDouble();
 		System.out.println("Enter regular customer rate on weekends :");
 		weekendRegularCustomerRate = sc.nextDouble();
-		hotel = new Hotel(hotelName, rating, regularCustomerRate, weekendRegularCustomerRate);
+		hotel = new Hotel(hotelName, rating, regularCustomerRate, weekendRegularCustomerRate, rewardCustomerRate, weekendRewartCustomerRate);
 		return hotelList.add(hotel);
 	}
 
@@ -140,7 +143,7 @@ public class HotelReservation {
 	public Hotel getCheapestBestRatedHotel(LocalDate startDate, LocalDate endDate) {
 
 		ArrayList<Hotel> cheapestHotels = getCheapestHotel(startDate, endDate);
-		Optional<Hotel> sortedHotelList = hotelList.stream().max(Comparator.comparing(Hotel::getRate));
+		Optional<Hotel> sortedHotelList = hotelList.stream().max(Comparator.comparing(Hotel::getRating));
 		System.out.println("Cheapest Best Rated Hotel : \n" + sortedHotelList.get().getHotelName());
 		return sortedHotelList.get();
 	}
@@ -155,7 +158,7 @@ public class HotelReservation {
 	 */
 	public Hotel getBestRatedHotel(LocalDate startDate, LocalDate endDate) {
 
-		Optional<Hotel> sortedHotelList = hotelList.stream().max(Comparator.comparing(Hotel::getRate));
+		Optional<Hotel> sortedHotelList = hotelList.stream().max(Comparator.comparing(Hotel::getRating));
 		return sortedHotelList.get();
 	}
 }

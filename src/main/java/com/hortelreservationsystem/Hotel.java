@@ -10,6 +10,8 @@ public class Hotel {
 	private int rating;
 	private double regularCustomerRate;
 	private double weekendRegularCustomerRate;
+	private double rewardCustomerRate;
+	private double weekendRewardCustomerRate;
 
 	/**
 	 * Default Constructor
@@ -18,21 +20,28 @@ public class Hotel {
 	}
 
 	/**
+	 * Constructor
 	 * 
 	 * @param hotelName                  - Name of the hotel.
 	 * @param rating                     - Rating for the hotel.
-	 * @param regularCustomerRate        - Rate for regular customers.
+	 * @param regularCustomerRate        - Rate for regular customers on weekdays.
 	 * @param weekendRegularCustomerRate - Rate for regular customer on weekends.
+	 * @param rewardCustomerRate         - Rate for reward customers on weekdays.
+	 * @param weekendRewardCustomerRate  - Rate for reward customers on weekends.
 	 */
-	public Hotel(String hotelName, int rating, double regularCustomerRate, double weekendRegularCustomerRate) {
+	public Hotel(String hotelName, int rating, double regularCustomerRate, double weekendRegularCustomerRate,
+			double rewardCustomerRate, double weekendRewardCustomerRate) {
 		this.hotelName = hotelName;
 		this.rating = rating;
 		this.regularCustomerRate = regularCustomerRate;
 		this.weekendRegularCustomerRate = weekendRegularCustomerRate;
+		this.rewardCustomerRate = rewardCustomerRate;
+		this.weekendRewardCustomerRate = weekendRewardCustomerRate;
 	}
 
 	/**
-	 * Getters and Setters for hotelName, rating and regualrCustomerRate
+	 * Getters and Setters for hotelName, rating and regualrCustomerRate,
+	 * weekendRegularCustomerRate, rewardCustomerRate, weekendRewardCustomerRate
 	 * 
 	 */
 	public String getHotelName() {
@@ -43,12 +52,12 @@ public class Hotel {
 		this.hotelName = hotelName;
 	}
 
-	public int getRate() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRate(int rate) {
-		this.rating = rate;
+	public void setRate(int rating) {
+		this.rating = rating;
 	}
 
 	public double getRegularCustomerRate() {
@@ -67,13 +76,30 @@ public class Hotel {
 		this.weekendRegularCustomerRate = weekendRegularCustomerRate;
 	}
 
+	public double getRewardCustomerRate() {
+		return rewardCustomerRate;
+	}
+
+	public void setRewardCustomerRate(double rewardCustomerRate) {
+		this.rewardCustomerRate = rewardCustomerRate;
+	}
+
+	public double getWeekendRewardCustomerRate() {
+		return weekendRewardCustomerRate;
+	}
+
+	public void setWeekendRewardCustomerRate(double weekendRewardCustomerRate) {
+		this.weekendRewardCustomerRate = weekendRewardCustomerRate;
+	}
+
 	/**
 	 * toSring Method to make list of hotels to String form for printing.
 	 */
 	@Override
 	public String toString() {
 		return "Hotel [hotelName=" + hotelName + ", rating=" + rating + ", regularCustomerRate=" + regularCustomerRate
-				+ ", weekendRegularCustomerRate=" + weekendRegularCustomerRate + "]";
+				+ ", weekendRegularCustomerRate=" + weekendRegularCustomerRate + ", rewardCustomerRate="
+				+ rewardCustomerRate + ", weekendRewardCustomerRate=" + weekendRewardCustomerRate + "]";
 	}
 
 }
