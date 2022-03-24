@@ -62,28 +62,29 @@ public class HotelReservation {
 	public void printHotelList() {
 		System.out.println(hotelList);
 	}
+
 	/**
-	 * Method to find the cheapest hotel. 
-	 * Using ChromoUnit to get the dates
-	 * Finding no. of weekdays and weekends using switch cases on DAY_OF_WEEK.
-	 * Comparing the rate by formula(weekdays*week days rate)+(weekends*weekend rates)
+	 * Method to find the cheapest hotel. Using ChromoUnit to get the dates Finding
+	 * no. of weekdays and weekends using switch cases on DAY_OF_WEEK. Comparing the
+	 * rate by formula(weekdays*week days rate)+(weekends*weekend rates)
+	 * 
 	 * @param startDate - Check in date to hotel
-	 * @param endDate - Check out date from hotel
-	 * @return -  Hotel with the cheapest rate: sortedHotelList
+	 * @param endDate   - Check out date from hotel
+	 * @return - Hotel with the cheapest rate: sortedHotelList
 	 */
-	public String getCheapestHotel(LocalDate startDate, LocalDate endDate) {
+	public ArrayList<Hotel> getCheapestHotel(LocalDate startDate, LocalDate endDate) {
 
 		int numberOfDays = (int) ChronoUnit.DAYS.between(startDate, endDate);
-        int weekends = 0;
-        
+		int weekends = 0;
+
 		while (startDate.compareTo(endDate) != 0) {
-            switch (DayOfWeek.of(startDate.get(ChronoField.DAY_OF_WEEK))) {
-                case SATURDAY:
-                    ++weekends;
-                    break;
-                case SUNDAY:
-                    ++weekends;
-                    break;
+			switch (DayOfWeek.of(startDate.get(ChronoField.DAY_OF_WEEK))) {
+			case SATURDAY:
+				++weekends;
+				break;
+			case SUNDAY:
+				++weekends;
+				break;
 			case FRIDAY:
 				break;
 			case MONDAY:
@@ -96,8 +97,8 @@ public class HotelReservation {
 				break;
 			default:
 				break;
-            }
-        }
+			}
+		}
 		/**
 		 * Defining week days and weekends
 		 */
@@ -107,21 +108,40 @@ public class HotelReservation {
 		 * Calculating cheapest rate (weekdays*week days rate)+(weekends*weekend rates)
 		 */
 		final double cheapestPrice = hotelList.stream()
-				.mapToDouble(hotel -> ((hotel.getWeekendRegularCustomerRate()*weekendsNumber) + hotel.getRegularCustomerRate()*weekdaysNumber))
-				.min()
-				.orElse(Double.MAX_VALUE);
+				.mapToDouble(hotel -> ((hotel.getWeekendRegularCustomerRate() * weekendsNumber)
+						+ hotel.getRegularCustomerRate() * weekdaysNumber))
+				.min().orElse(Double.MAX_VALUE);
 		/**
 		 * Filtering and collecting hotel with cheapest rate
 		 */
 		ArrayList<Hotel> cheapestHotel = hotelList.stream()
-				.filter(hotel -> (hotel.getWeekendRegularCustomerRate()*weekendsNumber + hotel.getRegularCustomerRate()*weekdaysNumber) == cheapestPrice)
+				.filter(hotel -> (hotel.getWeekendRegularCustomerRate() * weekendsNumber
+						+ hotel.getRegularCustomerRate() * weekdaysNumber) == cheapestPrice)
 				.collect(Collectors.toCollection(ArrayList::new));
-		
-        if (cheapestPrice != Double.MAX_VALUE) {
-        	
-        	System.out.println("Cheapest Hotel : \n" + cheapestHotel.get(0).getHotelName() + ", Total Rates: " + cheapestPrice);
-        	return cheapestHotel.get(0).getHotelName();
-        }
-        return null;
+
+		if (cheapestPrice != Double.MAX_VALUE) {
+
+			System.out.println(
+					"Cheapest Hotel : \n" + cheapestHotel.get(0).getHotelName() + ", Total Rates: " + cheapestPrice);
+			return cheapestHotel;
+		}
+		return null;
+	}
+
+	/**
+	 * Creating arrayList of cheapest hotels by calling getCheapestHotel method:
+	 * cheapestHotels Now filter this arraylist with max rating. Print the Hotel:
+	 * SortedHotelList
+	 * 
+	 * @param startDate
+	 * @param endDate
+	 * @return - sortedHotelList
+	 */
+	public Hotel getCheapestBestRatedHotel(LocalDate startDate, LocalDate endDate) {
+
+		ArrayList<Hotel> cheapestHotels = getCheapestHotel(startDate, endDate);
+		Optional<Hotel> sortedHotelList = hotelList.stream().max(Comparator.comparing(Hotel::getRate));
+		System.out.println("Cheapest Best Rated Hotel : \n" + sortedHotelList.get().getHotelName());
+		return sortedHotelList.get();
 	}
 }

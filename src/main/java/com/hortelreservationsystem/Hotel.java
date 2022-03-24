@@ -3,13 +3,14 @@ package com.hortelreservationsystem;
 public class Hotel {
 	/**
 	 * hotelName - Name of the hotel. rating - Rating of Hotel. regularCustomerRate
-	 * - Rate for regular customers.
-	 * weekendRegularCustomerRate - Rate for regular customers on weekend.
+	 * - Rate for regular customers. weekendRegularCustomerRate - Rate for regular
+	 * customers on weekend.
 	 */
 	private String hotelName;
 	private int rating;
 	private double regularCustomerRate;
 	private double weekendRegularCustomerRate;
+
 	/**
 	 * Default Constructor
 	 */
@@ -18,9 +19,9 @@ public class Hotel {
 
 	/**
 	 * 
-	 * @param hotelName           - Name of the hotel.
-	 * @param rating              - Rating for the hotel.
-	 * @param regularCustomerRate - Rate for regular customers.
+	 * @param hotelName                  - Name of the hotel.
+	 * @param rating                     - Rating for the hotel.
+	 * @param regularCustomerRate        - Rate for regular customers.
 	 * @param weekendRegularCustomerRate - Rate for regular customer on weekends.
 	 */
 	public Hotel(String hotelName, int rating, double regularCustomerRate, double weekendRegularCustomerRate) {
@@ -72,7 +73,7 @@ public class Hotel {
 	@Override
 	public String toString() {
 		return "Hotel [hotelName=" + hotelName + ", rating=" + rating + ", regularCustomerRate=" + regularCustomerRate
-				 + ", weekendRegularCustomerRate=" + weekendRegularCustomerRate + "]";
+				+ ", weekendRegularCustomerRate=" + weekendRegularCustomerRate + "]";
 	}
 
 }

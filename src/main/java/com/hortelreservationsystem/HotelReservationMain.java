@@ -28,10 +28,10 @@ public class HotelReservationMain {
 		LocalDate startDate = LocalDate.of(2021, Month.SEPTEMBER, 10);
 		LocalDate endDate = LocalDate.of(2021, Month.SEPTEMBER, 11);
 		/**
-		 * Calling method getCheapestHotel with start and end dates as params
-		 * Printing the result: Hotel
+		 * Calling method getCheapestHotel with start and end dates as params Printing
+		 * the result: Hotel
 		 */
-		String hotel = hotelReservation.getCheapestHotel(startDate, endDate);
-		System.out.println("The cheapest hotel is : \n " + hotel);
+		Hotel hotelName = hotelReservation.getCheapestBestRatedHotel(startDate, endDate);
+		System.out.println("The cheapest hotel is : \n " + hotelName);
 	}
 }
