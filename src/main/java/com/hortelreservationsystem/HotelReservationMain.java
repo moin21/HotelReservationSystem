@@ -2,6 +2,7 @@ package com.hortelreservationsystem;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 
 /**
  * Class with Main method.
@@ -39,5 +40,12 @@ public class HotelReservationMain {
 		 */
 		Hotel bestRatedHotel = hotelReservation.getBestRatedHotel(startDate, endDate);
 		System.out.println("The best rated hotel is : \n " + bestRatedHotel);
+		/**
+		 * Calling method getCheapestBestRatedHotelForRewardCustomer with start and end
+		 * dates as params Printing the result: rewardHotelName
+		 */
+		ArrayList<Hotel> rewardHotelName = hotelReservation.getCheapestBestRateHotelForRewardCustomer(startDate,
+				endDate);
+		System.out.println("The cheapest hotel is : \n " + rewardHotelName);
 	}
 }
