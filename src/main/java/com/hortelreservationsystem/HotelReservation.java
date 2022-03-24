@@ -133,15 +133,29 @@ public class HotelReservation {
 	 * cheapestHotels Now filter this arraylist with max rating. Print the Hotel:
 	 * SortedHotelList
 	 * 
-	 * @param startDate
-	 * @param endDate
-	 * @return - sortedHotelList
+	 * @param startDate - Check in date to hotel
+	 * @param endDate   - Check out date from hotel
+	 * @return - Hotel with the cheapest rate and best rate: sortedHotelList
 	 */
 	public Hotel getCheapestBestRatedHotel(LocalDate startDate, LocalDate endDate) {
 
 		ArrayList<Hotel> cheapestHotels = getCheapestHotel(startDate, endDate);
 		Optional<Hotel> sortedHotelList = hotelList.stream().max(Comparator.comparing(Hotel::getRate));
 		System.out.println("Cheapest Best Rated Hotel : \n" + sortedHotelList.get().getHotelName());
+		return sortedHotelList.get();
+	}
+
+	/**
+	 * Method to find best rated hotel Using stream .max method to find Hotel with
+	 * best rating.
+	 * 
+	 * @param startDate - Check in date to hotel
+	 * @param endDate   - Check out date from hotel
+	 * @return - Hotel with the best rating: sortedHotelList
+	 */
+	public Hotel getBestRatedHotel(LocalDate startDate, LocalDate endDate) {
+
+		Optional<Hotel> sortedHotelList = hotelList.stream().max(Comparator.comparing(Hotel::getRate));
 		return sortedHotelList.get();
 	}
 }
