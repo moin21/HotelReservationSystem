@@ -1,6 +1,10 @@
 package com.hortelreservationsystem;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.Scanner;
 
 /**
@@ -52,5 +56,18 @@ public class HotelReservation {
 	public void printHotelList() {
 		System.out.println(hotelList);
 	}
+	/**
+	 * Method to find the cheapest hotel. 
+	 * Using ChromoUnit to get the date
+	 * Comparing the regular cost of the hotel using comparator and finding the cheapest hotel using .min
+	 * @param startDate - Check in date to hotel
+	 * @param endDate - Check out date from hotel
+	 * @return -  Hotel with the cheapest rate: sortedHotelList
+	 */
+	public Hotel getCheapestHotel(LocalDate startDate, LocalDate endDate) {
 
+
+		Optional<Hotel> sortedHotelList = hotelList.stream().min(Comparator.comparing(Hotel::getRegularCustomerRate));
+		return sortedHotelList.get();
+	}
 }
