@@ -21,6 +21,7 @@ public class HotelReservation {
 	String hotelName;
 	int rating;
 	double regularCustomerRate;
+	double weekendRegularCustomerRate;
 	Scanner sc = new Scanner(System.in);
 	/**
 	 * Creating ArrayList of Hotel named hotelList of Hotel type
@@ -44,9 +45,11 @@ public class HotelReservation {
 		hotelName = sc.next();
 		System.out.println("Enter hotel rating:");
 		rating = sc.nextInt();
-		System.out.println("Enter regular customer rate:");
+		System.out.println("Enter regular customer rate on weekdays :");
 		regularCustomerRate = sc.nextDouble();
-		hotel = new Hotel(hotelName, rating, regularCustomerRate);
+		System.out.println("Enter regular customer rate on weekends :");
+		weekendRegularCustomerRate = sc.nextDouble();
+		hotel = new Hotel(hotelName, rating, regularCustomerRate, weekendRegularCustomerRate);
 		return hotelList.add(hotel);
 	}
 
